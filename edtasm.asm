@@ -48,7 +48,7 @@ exitaddr:  equ     08003h
 #ifdef STGROM
 #define ANYROM
 ;[RLA] STG ROM addresses and options
-include config.inc
+#include config.inc
 #define CODE     EDTASM
 #define DATA     01000h
 ;[RLA] XMODEM entry vectors for the STG EPROM ...
@@ -71,7 +71,8 @@ exitaddr:  equ     08003h
 visualds:  equ     RAMPAGE-0100h
 #endif
 
-include    bios.inc
+#include    ../include/bios.inc
+#include    ../include/ops.inc
 
 ; RA - text buffer pointer
 ; R8 - Reg1 (line number)
@@ -2184,4 +2185,3 @@ stack:     equ     $+1f7h
 ; text buffer format
 ; byte size of line (0 if end of buffer)
 textbuf:   equ     $+1f9
-
